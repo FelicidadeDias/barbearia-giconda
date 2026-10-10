@@ -1,888 +1,1166 @@
+
 <!DOCTYPE html>
-<html lang="pt">
+<html lang="pt-AO">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#101010">
+  <meta name="description" content="Barbearia Giconda, no Zango. Conheça os serviços, explore os estilos de corte e entre em contacto para informações e marcações.">
+  <meta name="author" content="Fely e Amigos | Soluções Digitais">
+  <title>Barbearia Giconda | Estilo e Personalidade</title>
 
-  <title>Duchess Burguer | Sabor que vira experiência</title>
-
-  <meta name="description"
-        content="Duchess Burguer — Fast Food, eventos e experiências gastronómicas em Luanda.">
-
-  <meta name="theme-color" content="#080808">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;500;600;700;800;900&family=DM+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
   <style>
-    :root{
-      --black:#050505;
-      --black2:#0a0a0a;
-      --black3:#121212;
-      --gold:#d6a72c;
-      --gold2:#f4ca5c;
-      --white:#fff;
-      --gray:#c2c2c2;
-      --green:#25d366;
-      --border:rgba(255,255,255,.12);
+    :root {
+      --bg: #101010;
+      --bg-soft: #171717;
+      --surface: #202020;
+      --white: #f7f5f0;
+      --muted: #a4a4a4;
+      --gold: #d5aa63;
+      --gold-light: #f0cf91;
+      --line: rgba(255,255,255,.11);
+      --green: #25D366;
+      --font: "DM Sans", sans-serif;
+      --display: "Barlow Condensed", sans-serif;
+      --container: 1160px;
     }
 
-    *{
-      margin:0;
-      padding:0;
-      box-sizing:border-box;
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
     }
 
-    html{
-      scroll-behavior:smooth;
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 90px;
     }
 
-    body{
-      font-family:Arial,Helvetica,sans-serif;
-      background:var(--black);
-      color:var(--white);
-      line-height:1.6;
-      overflow-x:hidden;
+    body {
+      font-family: var(--font);
+      background: var(--bg);
+      color: var(--white);
+      line-height: 1.6;
+      overflow-x: hidden;
     }
 
-    img{
-      display:block;
-      width:100%;
+    body.menu-open {
+      overflow: hidden;
     }
 
-    a{
-      text-decoration:none;
-      color:inherit;
+    a {
+      color: inherit;
+      text-decoration: none;
     }
 
-    .container{
-      width:min(1120px,92%);
-      margin:auto;
+    button {
+      font: inherit;
     }
 
-    /* =========================
-       HEADER
-    ========================== */
-
-    header{
-      position:sticky;
-      top:0;
-      z-index:1000;
-      background:rgba(5,5,5,.94);
-      backdrop-filter:blur(12px);
-      border-bottom:1px solid var(--border);
+    img {
+      max-width: 100%;
+      display: block;
     }
 
-    .nav{
-      min-height:72px;
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:20px;
+    button, a {
+      -webkit-tap-highlight-color: transparent;
     }
 
-    .logo{
-      font-size:23px;
-      font-weight:900;
+    .container {
+      width: min(var(--container), calc(100% - 40px));
+      margin-inline: auto;
     }
 
-    .logo span{
-      color:var(--gold2);
+    .section {
+      padding: 100px 0;
     }
 
-    nav{
-      display:flex;
-      align-items:center;
-      gap:20px;
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--gold);
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      margin-bottom: 16px;
     }
 
-    nav a{
-      font-size:14px;
-      color:#ddd;
-      transition:.25s;
+    .eyebrow::before {
+      content: "";
+      width: 28px;
+      height: 2px;
+      background: var(--gold);
     }
 
-    nav a:hover{
-      color:var(--gold2);
+    .section-title {
+      font-family: var(--display);
+      font-size: clamp(40px, 6vw, 68px);
+      line-height: .98;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: -.5px;
     }
 
-    .nav-btn{
-      background:var(--gold);
-      color:#111!important;
-      padding:10px 17px;
-      border-radius:8px;
-      font-weight:800;
+    .section-title span {
+      color: var(--gold);
     }
 
-    .nav-btn:hover{
-      background:var(--gold2);
+    .section-description {
+      color: var(--muted);
+      max-width: 570px;
+      margin-top: 18px;
+      font-size: 14px;
     }
 
-    /* =========================
-       HERO
-    ========================== */
+    .btn {
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+      min-height: 50px;
+      padding: 14px 23px;
+      border: 1px solid transparent;
+      border-radius: 3px;
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: .6px;
+      transition: .25s ease;
+      cursor: pointer;
+    }
 
-    .hero{
-      min-height:680px;
-      position:relative;
-      display:flex;
-      align-items:center;
+    .btn-primary {
+      color: #17130d;
+      background: var(--gold);
+    }
+
+    .btn-primary:hover {
+      background: var(--gold-light);
+      transform: translateY(-2px);
+    }
+
+    .btn-outline {
+      border-color: rgba(255,255,255,.3);
+      color: var(--white);
+      background: transparent;
+    }
+
+    .btn-outline:hover {
+      border-color: var(--gold);
+      color: var(--gold);
+    }
+
+    .btn-whatsapp {
+      background: var(--green);
+      color: #082b16;
+    }
+
+    .btn-whatsapp:hover {
+      background: #51e487;
+      transform: translateY(-2px);
+    }
+
+    /* Barra superior */
+
+    .topbar {
+      background: #080808;
+      border-bottom: 1px solid var(--line);
+      color: #bcbcbc;
+      font-size: 10px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+
+    .topbar-inner {
+      min-height: 36px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 15px;
+    }
+
+    .topbar strong {
+      color: var(--gold);
+      font-weight: 700;
+    }
+
+    /* Navegação */
+
+    .header {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: rgba(16,16,16,.95);
+      backdrop-filter: blur(15px);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .nav {
+      min-height: 78px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 25px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      min-width: 0;
+    }
+
+    .brand-symbol {
+      width: 46px;
+      height: 46px;
+      display: grid;
+      place-items: center;
+      border: 1px solid var(--gold);
+      color: var(--gold);
+      font-family: var(--display);
+      font-size: 26px;
+      font-weight: 900;
+      flex-shrink: 0;
+    }
+
+    .brand-text strong {
+      display: block;
+      font-family: var(--display);
+      font-size: 24px;
+      line-height: 1;
+      text-transform: uppercase;
+      letter-spacing: .5px;
+    }
+
+    .brand-text small {
+      display: block;
+      margin-top: 5px;
+      color: var(--gold);
+      font-size: 8px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 26px;
+    }
+
+    .nav-links a:not(.btn) {
+      color: #d2d2d2;
+      font-size: 11px;
+      font-weight: 700;
+      transition: color .2s;
+    }
+
+    .nav-links a:not(.btn):hover {
+      color: var(--gold);
+    }
+
+    .nav-links .btn {
+      min-height: 42px;
+      padding: 11px 16px;
+    }
+
+    .menu-toggle {
+      display: none;
+      width: 44px;
+      height: 44px;
+      background: transparent;
+      border: 1px solid var(--line);
+      color: var(--white);
+      font-size: 25px;
+      cursor: pointer;
+    }
+
+    /* Hero */
+
+    .hero {
+      position: relative;
+      min-height: 650px;
+      display: flex;
+      align-items: center;
+      overflow: hidden;
+      background: #141414;
+    }
+
+    .hero-image {
+      position: absolute;
+      inset: 0;
       background:
-        linear-gradient(
-          90deg,
-          rgba(0,0,0,.88),
-          rgba(0,0,0,.52),
-          rgba(0,0,0,.68)
-        ),
-        url("https://commons.wikimedia.org/wiki/Special:Redirect/file/A%20cheeseburger.jpg");
-
-      background-size:cover;
-      background-position:center;
+        linear-gradient(90deg, rgba(10,10,10,.97) 0%, rgba(10,10,10,.84) 42%, rgba(10,10,10,.32) 100%),
+        linear-gradient(0deg, rgba(10,10,10,.8), transparent 40%),
+        url("https://images.unsplash.com/photo-1503951914875-452162b0f3f1?auto=format&fit=crop&w=2000&q=85")
+        center 45% / cover no-repeat;
+      transform: scale(1.02);
     }
 
-    .hero-content{
-      max-width:760px;
-      padding:100px 0;
+    .hero::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(120deg, transparent 65%, rgba(213,170,99,.09));
+      pointer-events: none;
     }
 
-    .badge{
-      display:inline-block;
-      padding:8px 14px;
-      border:1px solid rgba(214,167,44,.55);
-      background:rgba(214,167,44,.12);
-      color:var(--gold2);
-      border-radius:30px;
-      font-size:12px;
-      font-weight:800;
-      letter-spacing:1px;
-      margin-bottom:20px;
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      width: 100%;
+      padding: 100px 0;
     }
 
-    .hero h1{
-      font-size:clamp(43px,7vw,78px);
-      line-height:1.02;
-      margin-bottom:20px;
-      font-weight:900;
+    .hero-copy {
+      max-width: 690px;
     }
 
-    .hero h1 span{
-      color:var(--gold2);
+    .hero-kicker {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 9px 13px;
+      border: 1px solid rgba(213,170,99,.4);
+      color: var(--gold-light);
+      background: rgba(15,15,15,.45);
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-bottom: 26px;
     }
 
-    .hero p{
-      max-width:650px;
-      color:#e4e4e4;
-      font-size:18px;
-      margin-bottom:30px;
+    .hero-kicker span {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--gold);
     }
 
-    .buttons{
-      display:flex;
-      flex-wrap:wrap;
-      gap:12px;
+    .hero h1 {
+      font-family: var(--display);
+      font-size: clamp(62px, 10vw, 112px);
+      font-weight: 900;
+      line-height: .83;
+      letter-spacing: -1px;
+      text-transform: uppercase;
     }
 
-    .btn{
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
-      padding:13px 21px;
-      border-radius:8px;
-      font-weight:800;
-      transition:.25s;
+    .hero h1 span {
+      display: block;
+      color: var(--gold);
     }
 
-    .btn-gold{
-      background:var(--gold);
-      color:#111;
+    .hero-description {
+      max-width: 460px;
+      margin-top: 28px;
+      color: #c5c5c5;
+      font-size: 14px;
+      line-height: 1.9;
     }
 
-    .btn-gold:hover{
-      background:var(--gold2);
-      transform:translateY(-2px);
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 30px;
     }
 
-    .btn-outline{
-      border:1px solid rgba(255,255,255,.28);
-      background:rgba(255,255,255,.05);
-      color:#fff;
+    .hero-bottom {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 24px;
+      margin-top: 48px;
+      padding-top: 23px;
+      border-top: 1px solid rgba(255,255,255,.2);
     }
 
-    .btn-outline:hover{
-      border-color:var(--gold);
-      color:var(--gold2);
+    .hero-detail {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: #d0d0d0;
+      font-size: 11px;
     }
 
-    /* =========================
-       VISUAL FEATURES
-    ========================== */
-
-    .visual-section{
-      background:#080808;
-      padding:18px 0;
+    .hero-detail-icon {
+      color: var(--gold);
+      font-size: 19px;
     }
 
-    .visual-grid{
-      display:grid;
-      grid-template-columns:repeat(3,1fr);
-      gap:12px;
+    /* Faixa informativa */
+
+    .feature-strip {
+      background: var(--gold);
+      color: #18130c;
     }
 
-    .visual-card{
-      height:220px;
-      position:relative;
-      overflow:hidden;
-      border-radius:16px;
-      border:1px solid var(--border);
-      background:#111;
+    .feature-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
     }
 
-    .visual-card img{
-      position:absolute;
-      inset:0;
-      width:100%;
-      height:100%;
-      object-fit:cover;
-      transition:transform .7s ease;
+    .feature {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      padding: 25px 22px;
+      border-right: 1px solid rgba(0,0,0,.15);
     }
 
-    .visual-card:hover img{
-      transform:scale(1.08);
+    .feature:first-child {
+      padding-left: 0;
     }
 
-    .visual-overlay{
-      position:absolute;
-      inset:0;
+    .feature:last-child {
+      border-right: 0;
+    }
+
+    .feature-number {
+      font-family: var(--display);
+      font-size: 32px;
+      font-weight: 900;
+    }
+
+    .feature strong {
+      display: block;
+      font-size: 12px;
+      text-transform: uppercase;
+    }
+
+    .feature small {
+      display: block;
+      font-size: 10px;
+      opacity: .75;
+    }
+
+    /* Sobre */
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: center;
+      gap: 70px;
+    }
+
+    .about-visual {
+      position: relative;
+      min-height: 440px;
+    }
+
+    .about-image {
+      position: absolute;
+      inset: 0 45px 35px 0;
+      width: calc(100% - 45px);
+      height: calc(100% - 35px);
+      object-fit: cover;
+      filter: saturate(.8);
+    }
+
+    .about-frame {
+      position: absolute;
+      inset: 18px 18px 0 18px;
+      border: 1px solid var(--gold);
+      pointer-events: none;
+    }
+
+    .about-stamp {
+      position: absolute;
+      right: 0;
+      bottom: 0;
+      padding: 21px;
+      background: var(--gold);
+      color: #15110b;
+      max-width: 180px;
+    }
+
+    .about-stamp strong {
+      display: block;
+      font-family: var(--display);
+      font-size: 26px;
+      line-height: 1;
+      text-transform: uppercase;
+    }
+
+    .about-stamp small {
+      display: block;
+      margin-top: 7px;
+      font-size: 10px;
+    }
+
+    .about-copy .section-title {
+      margin-bottom: 22px;
+    }
+
+    .about-copy p {
+      margin-bottom: 16px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .check-list {
+      list-style: none;
+      display: grid;
+      gap: 13px;
+      margin: 26px 0;
+    }
+
+    .check-list li {
+      display: flex;
+      gap: 11px;
+      color: #e6e6e6;
+      font-size: 12px;
+    }
+
+    .check-list li span {
+      color: var(--gold);
+      font-weight: 900;
+    }
+
+    /* Serviços */
+
+    .services {
+      background: #151515;
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .section-heading-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: end;
+      gap: 25px;
+      margin-bottom: 45px;
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .service-card {
+      position: relative;
+      padding: 29px 25px;
+      background: var(--bg-soft);
+      border: 1px solid var(--line);
+      transition: .25s ease;
+    }
+
+    .service-card:hover {
+      transform: translateY(-5px);
+      border-color: rgba(213,170,99,.6);
+    }
+
+    .service-icon {
+      width: 48px;
+      height: 48px;
+      display: grid;
+      place-items: center;
+      margin-bottom: 23px;
+      border: 1px solid rgba(213,170,99,.45);
+      color: var(--gold);
+      font-size: 23px;
+    }
+
+    .service-card h3 {
+      font-family: var(--display);
+      font-size: 27px;
+      line-height: 1.1;
+      text-transform: uppercase;
+    }
+
+    .service-card p {
+      margin: 12px 0 22px;
+      color: var(--muted);
+      font-size: 12px;
+      min-height: 40px;
+    }
+
+    .service-price {
+      padding-top: 17px;
+      border-top: 1px solid var(--line);
+      color: var(--gold);
+      font-size: 12px;
+      font-weight: 800;
+    }
+
+    .service-price small {
+      display: block;
+      margin-top: 4px;
+      color: #888;
+      font-size: 9px;
+      font-weight: 400;
+    }
+
+    .services-note {
+      margin-top: 24px;
+      color: #929292;
+      font-size: 11px;
+    }
+
+    /* Galeria */
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      grid-auto-rows: 240px;
+      gap: 14px;
+      margin-top: 42px;
+    }
+
+    .gallery-item {
+      position: relative;
+      overflow: hidden;
+      background: var(--surface);
+    }
+
+    .gallery-item:first-child {
+      grid-row: span 2;
+    }
+
+    .gallery-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform .5s ease;
+    }
+
+    .gallery-item:hover img {
+      transform: scale(1.06);
+    }
+
+    .gallery-overlay {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: end;
+      padding: 20px;
+      background: linear-gradient(0deg, rgba(0,0,0,.8), transparent 60%);
+    }
+
+    .gallery-overlay span {
+      font-family: var(--display);
+      font-size: 22px;
+      font-weight: 700;
+      text-transform: uppercase;
+    }
+
+    /* Chamada */
+
+    .cta {
+      position: relative;
+      padding: 70px 0;
       background:
-        linear-gradient(
-          180deg,
-          rgba(0,0,0,.15) 10%,
-          rgba(0,0,0,.55) 48%,
-          rgba(0,0,0,.92) 100%
-        );
+        linear-gradient(90deg, rgba(12,12,12,.96), rgba(12,12,12,.82)),
+        url("https://images.unsplash.com/photo-1621605815971-fbc98d665033?auto=format&fit=crop&w=1600&q=80")
+        center / cover;
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
     }
 
-    .visual-content{
-      position:absolute;
-      z-index:2;
-      inset:0;
-      display:flex;
-      flex-direction:column;
-      justify-content:flex-end;
-      align-items:flex-start;
-      padding:24px;
+    .cta-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 35px;
     }
 
-    .visual-icon{
-      font-size:36px;
-      margin-bottom:8px;
-      filter:drop-shadow(0 3px 5px #000);
+    .cta h2 {
+      font-family: var(--display);
+      font-size: clamp(38px, 6vw, 62px);
+      line-height: .98;
+      text-transform: uppercase;
     }
 
-    .visual-content strong{
-      font-size:21px;
-      letter-spacing:2px;
-      margin-bottom:5px;
+    .cta h2 span {
+      color: var(--gold);
     }
 
-    .visual-content p{
-      color:#ddd;
-      font-size:13px;
-      max-width:270px;
+    .cta p {
+      margin-top: 13px;
+      color: #c4c4c4;
+      font-size: 13px;
     }
 
-    /* =========================
-       SECTIONS
-    ========================== */
-
-    section{
-      padding:90px 0;
+    .cta .btn {
+      flex-shrink: 0;
     }
 
-    .section-head{
-      max-width:720px;
-      margin-bottom:40px;
+    /* Localização */
+
+    .location {
+      background: #151515;
     }
 
-    .small{
-      color:var(--gold2);
-      font-size:12px;
-      font-weight:900;
-      letter-spacing:2px;
-      text-transform:uppercase;
-      margin-bottom:9px;
+    .location-grid {
+      display: grid;
+      grid-template-columns: .85fr 1.15fr;
+      gap: 40px;
+      margin-top: 38px;
     }
 
-    .section-head h2{
-      font-size:clamp(31px,5vw,49px);
-      line-height:1.08;
-      margin-bottom:14px;
+    .location-info {
+      padding: 30px;
+      background: var(--bg-soft);
+      border: 1px solid var(--line);
     }
 
-    .section-head p{
-      color:var(--gray);
+    .location-row {
+      display: flex;
+      gap: 15px;
+      padding: 19px 0;
+      border-bottom: 1px solid var(--line);
     }
 
-    /* =========================
-       MENU
-    ========================== */
-
-    .menu{
-      background:var(--black2);
+    .location-row:last-of-type {
+      border-bottom: 0;
     }
 
-    .product-grid{
-      display:grid;
-      grid-template-columns:repeat(3,1fr);
-      gap:18px;
+    .location-icon {
+      color: var(--gold);
+      font-size: 22px;
     }
 
-    .product{
-      height:390px;
-      position:relative;
-      overflow:hidden;
-      border-radius:16px;
-      border:1px solid var(--border);
-      background:#111;
+    .location-row strong {
+      display: block;
+      font-size: 12px;
+      margin-bottom: 5px;
     }
 
-    .product img{
-      position:absolute;
-      inset:0;
-      width:100%;
-      height:100%;
-      object-fit:cover;
-      transition:.6s;
+    .location-row p {
+      color: var(--muted);
+      font-size: 11px;
     }
 
-    .product:hover img{
-      transform:scale(1.07);
+    .location-info .btn {
+      width: 100%;
+      margin-top: 20px;
     }
 
-    .product::after{
-      content:"";
-      position:absolute;
-      inset:0;
+    .map-panel {
+      min-height: 370px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 35px;
+      border: 1px solid var(--line);
       background:
-        linear-gradient(
-          180deg,
-          rgba(0,0,0,.05) 15%,
-          rgba(0,0,0,.40) 45%,
-          rgba(0,0,0,.94) 100%
-        );
+        linear-gradient(rgba(12,12,12,.86), rgba(12,12,12,.88)),
+        url("https://images.unsplash.com/photo-1519501025264-65ba15a82390?auto=format&fit=crop&w=1200&q=80")
+        center / cover;
     }
 
-    .product-content{
-      position:absolute;
-      z-index:2;
-      left:22px;
-      right:22px;
-      bottom:22px;
+    .map-pin {
+      width: 62px;
+      height: 62px;
+      display: grid;
+      place-items: center;
+      margin-bottom: 20px;
+      border: 1px solid var(--gold);
+      border-radius: 50%;
+      color: var(--gold);
+      font-size: 28px;
     }
 
-    .product-tag{
-      display:inline-block;
-      background:var(--gold);
-      color:#111;
-      padding:5px 9px;
-      border-radius:5px;
-      font-size:10px;
-      font-weight:900;
-      margin-bottom:10px;
-      text-transform:uppercase;
+    .map-panel h3 {
+      font-family: var(--display);
+      font-size: 35px;
+      text-transform: uppercase;
     }
 
-    .product-content h3{
-      font-size:25px;
-      margin-bottom:7px;
+    .map-panel p {
+      max-width: 320px;
+      margin: 10px 0 22px;
+      color: #b8b8b8;
+      font-size: 12px;
     }
 
-    .product-content p{
-      color:#ddd;
-      font-size:14px;
+    /* Rodapé */
+
+    .footer {
+      padding: 55px 0 20px;
+      background: #090909;
     }
 
-    /* =========================
-       EXPERIENCE
-    ========================== */
-
-    .experience{
-      background:#080808;
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1.3fr 1fr 1fr;
+      gap: 45px;
+      padding-bottom: 40px;
     }
 
-    .experience-grid{
-      display:grid;
-      grid-template-columns:1fr 1fr;
-      gap:45px;
-      align-items:center;
+    .footer-about p {
+      max-width: 310px;
+      margin-top: 18px;
+      color: #929292;
+      font-size: 12px;
     }
 
-    .experience-image{
-      height:500px;
-      position:relative;
-      overflow:hidden;
-      border-radius:18px;
-      border:1px solid var(--border);
+    .footer h4 {
+      margin-bottom: 17px;
+      font-family: var(--display);
+      font-size: 21px;
+      text-transform: uppercase;
+      letter-spacing: .5px;
     }
 
-    .experience-image img{
-      width:100%;
-      height:100%;
-      object-fit:cover;
+    .footer-links {
+      display: grid;
+      gap: 11px;
     }
 
-    .experience-image::after{
-      content:"Duchess Burguer";
-      position:absolute;
-      left:20px;
-      bottom:20px;
-      padding:9px 13px;
-      background:rgba(0,0,0,.72);
-      border-left:3px solid var(--gold);
-      font-weight:800;
+    .footer-links a,
+    .footer-links p {
+      color: #a6a6a6;
+      font-size: 11px;
+      overflow-wrap: anywhere;
     }
 
-    .experience-content h2{
-      font-size:clamp(32px,5vw,52px);
-      line-height:1.05;
-      margin-bottom:20px;
+    .footer-links a:hover {
+      color: var(--gold);
     }
 
-    .experience-content h2 span{
-      color:var(--gold2);
+    .footer-bottom {
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      padding-top: 20px;
+      border-top: 1px solid var(--line);
+      color: #777;
+      font-size: 10px;
     }
 
-    .experience-content p{
-      color:var(--gray);
-      margin-bottom:18px;
+    .footer-bottom a {
+      color: var(--gold);
     }
 
-    .check-list{
-      list-style:none;
-      display:grid;
-      gap:12px;
-      margin:25px 0;
+    /* WhatsApp flutuante */
+
+    .whatsapp-float {
+      position: fixed;
+      right: 22px;
+      bottom: 22px;
+      z-index: 900;
+      width: 58px;
+      height: 58px;
+      display: grid;
+      place-items: center;
+      border-radius: 50%;
+      background: var(--green);
+      color: #062b14;
+      box-shadow: 0 8px 30px rgba(0,0,0,.4);
+      transition: transform .2s;
     }
 
-    .check-list li{
-      display:flex;
-      gap:10px;
-      color:#eee;
+    .whatsapp-float:hover {
+      transform: translateY(-4px) scale(1.04);
     }
 
-    .check-list span{
-      color:var(--gold2);
-      font-weight:900;
+    .whatsapp-float svg {
+      width: 29px;
+      height: 29px;
+      fill: currentColor;
     }
 
-    /* =========================
-       EVENTS
-    ========================== */
-
-    .events{
-      background:var(--black2);
+    .demo-label {
+      position: fixed;
+      left: 12px;
+      bottom: 12px;
+      z-index: 800;
+      padding: 7px 10px;
+      background: rgba(213,170,99,.95);
+      color: #16110a;
+      border-radius: 2px;
+      font-size: 9px;
+      font-weight: 800;
+      letter-spacing: 1px;
+      text-transform: uppercase;
     }
 
-    .event-grid{
-      display:grid;
-      grid-template-columns:repeat(4,1fr);
-      gap:15px;
+    /* Acessibilidade e adaptação */
+
+    a:focus-visible,
+    button:focus-visible {
+      outline: 2px solid var(--gold-light);
+      outline-offset: 4px;
     }
 
-    .event{
-      height:330px;
-      position:relative;
-      overflow:hidden;
-      border-radius:16px;
-      border:1px solid var(--border);
-    }
-
-    .event img{
-      position:absolute;
-      inset:0;
-      width:100%;
-      height:100%;
-      object-fit:cover;
-      transition:.6s;
-    }
-
-    .event:hover img{
-      transform:scale(1.08);
-    }
-
-    .event::after{
-      content:"";
-      position:absolute;
-      inset:0;
-      background:
-        linear-gradient(
-          180deg,
-          rgba(0,0,0,.05),
-          rgba(0,0,0,.88)
-        );
-    }
-
-    .event-content{
-      position:absolute;
-      z-index:2;
-      left:18px;
-      right:18px;
-      bottom:20px;
-    }
-
-    .event-icon{
-      font-size:28px;
-      margin-bottom:5px;
-    }
-
-    .event-content h3{
-      font-size:21px;
-      margin-bottom:5px;
-    }
-
-    .event-content p{
-      color:#ddd;
-      font-size:13px;
-    }
-
-    /* =========================
-       GALLERY
-    ========================== */
-
-    .gallery{
-      background:#080808;
-    }
-
-    .gallery-grid{
-      display:grid;
-      grid-template-columns:repeat(3,1fr);
-      gap:13px;
-    }
-
-    .gallery-item{
-      height:270px;
-      position:relative;
-      overflow:hidden;
-      border-radius:14px;
-      border:1px solid var(--border);
-    }
-
-    .gallery-item img{
-      width:100%;
-      height:100%;
-      object-fit:cover;
-      transition:.6s;
-    }
-
-    .gallery-item:hover img{
-      transform:scale(1.07);
-    }
-
-    .gallery-item::after{
-      content:"";
-      position:absolute;
-      inset:0;
-      background:linear-gradient(
-        transparent 45%,
-        rgba(0,0,0,.80)
-      );
-    }
-
-    .gallery-caption{
-      position:absolute;
-      z-index:2;
-      left:17px;
-      bottom:15px;
-      font-weight:800;
-      font-size:14px;
-    }
-
-    /* =========================
-       PROCESS
-    ========================== */
-
-    .process{
-      background:var(--black2);
-    }
-
-    .process-grid{
-      display:grid;
-      grid-template-columns:repeat(3,1fr);
-      gap:18px;
-    }
-
-    .process-card{
-      background:var(--black3);
-      border:1px solid var(--border);
-      border-radius:15px;
-      padding:30px 24px;
-    }
-
-    .process-number{
-      width:44px;
-      height:44px;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      background:var(--gold);
-      color:#111;
-      border-radius:50%;
-      font-weight:900;
-      margin-bottom:20px;
-    }
-
-    .process-card h3{
-      margin-bottom:8px;
-    }
-
-    .process-card p{
-      color:var(--gray);
-      font-size:14px;
-    }
-
-    /* =========================
-       CTA
-    ========================== */
-
-    .cta{
-      position:relative;
-      background:
-        linear-gradient(
-          rgba(0,0,0,.72),
-          rgba(0,0,0,.90)
-        ),
-        url("https://commons.wikimedia.org/wiki/Special:Redirect/file/A%20cheeseburger.jpg");
-
-      background-size:cover;
-      background-position:center;
-      text-align:center;
-    }
-
-    .cta-content{
-      max-width:760px;
-      margin:auto;
-    }
-
-    .cta h2{
-      font-size:clamp(34px,5vw,55px);
-      line-height:1.08;
-      margin-bottom:15px;
-    }
-
-    .cta p{
-      color:#ddd;
-      margin-bottom:25px;
-    }
-
-    /* =========================
-       CONTACT
-    ========================== */
-
-    .contact{
-      background:var(--black);
-    }
-
-    .contact-grid{
-      display:grid;
-      grid-template-columns:1fr 1fr;
-      gap:25px;
-    }
-
-    .contact-card{
-      background:var(--black3);
-      border:1px solid var(--border);
-      border-radius:16px;
-      padding:30px;
-    }
-
-    .contact-card h3{
-      font-size:23px;
-      margin-bottom:18px;
-    }
-
-    .contact-item{
-      padding:14px 0;
-      border-bottom:1px solid var(--border);
-      color:#ddd;
-    }
-
-    .contact-item:last-child{
-      border-bottom:none;
-    }
-
-    .contact-item strong{
-      display:block;
-      color:var(--gold2);
-      margin-bottom:3px;
-    }
-
-    /* =========================
-       DEMO
-    ========================== */
-
-    .demo-note{
-      background:#16110a;
-      border-top:1px solid rgba(214,167,44,.25);
-      border-bottom:1px solid rgba(214,167,44,.25);
-      padding:13px 20px;
-      text-align:center;
-      color:#d8c99f;
-      font-size:12px;
-    }
-
-    /* =========================
-       FOOTER
-    ========================== */
-
-    footer{
-      background:#030303;
-      border-top:1px solid var(--border);
-      padding:28px 0;
-      color:#888;
-      font-size:13px;
-    }
-
-    .footer-flex{
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:15px;
-    }
-
-    footer strong{
-      color:#ddd;
-    }
-
-    /* =========================
-       WHATSAPP
-    ========================== */
-
-    .whatsapp{
-      position:fixed;
-      right:20px;
-      bottom:20px;
-      width:59px;
-      height:59px;
-      border-radius:50%;
-      background:var(--green);
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      font-size:28px;
-      z-index:999;
-      box-shadow:0 8px 25px rgba(0,0,0,.5);
-      transition:.25s;
-    }
-
-    .whatsapp:hover{
-      transform:scale(1.08);
-    }
-
-    /* =========================
-       RESPONSIVE
-    ========================== */
-
-    @media(max-width:950px){
-
-      nav{
-        display:none;
-      }
-
-      .visual-grid{
-        grid-template-columns:1fr;
-      }
-
-      .visual-card{
-        height:190px;
-      }
-
-      .product-grid{
-        grid-template-columns:1fr;
-      }
-
-      .event-grid{
-        grid-template-columns:repeat(2,1fr);
-      }
-
-      .experience-grid{
-        grid-template-columns:1fr;
-      }
-
-      .process-grid{
-        grid-template-columns:1fr;
-      }
-
-      .contact-grid{
-        grid-template-columns:1fr;
+    @media (min-width: 1400px) {
+      .hero {
+        min-height: 730px;
       }
     }
 
-    @media(max-width:700px){
-
-      .hero{
-        min-height:620px;
+    @media (max-width: 900px) {
+      .nav-links {
+        gap: 16px;
       }
 
-      .hero-content{
-        padding:75px 0;
+      .nav-links a:not(.btn) {
+        font-size: 10px;
       }
 
-      .hero h1{
-        font-size:46px;
+      .about-grid {
+        gap: 35px;
       }
 
-      .hero p{
-        font-size:16px;
+      .services-grid {
+        grid-template-columns: repeat(2, 1fr);
       }
 
-      section{
-        padding:65px 0;
+      .feature {
+        padding-inline: 12px;
       }
 
-      .event-grid{
-        grid-template-columns:1fr;
+      .location-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 20px;
       }
 
-      .gallery-grid{
-        grid-template-columns:1fr 1fr;
-      }
-
-      .gallery-item{
-        height:190px;
-      }
-
-      .experience-image{
-        height:350px;
-      }
-
-      .footer-flex{
-        flex-direction:column;
-        text-align:center;
+      .footer-grid {
+        gap: 25px;
       }
     }
 
-    @media(max-width:450px){
-
-      .gallery-grid{
-        grid-template-columns:1fr;
+    @media (max-width: 700px) {
+      .container {
+        width: min(100% - 32px, var(--container));
       }
 
-      .gallery-item{
-        height:230px;
+      .section {
+        padding: 72px 0;
       }
 
-      .buttons{
-        flex-direction:column;
+      .topbar-inner {
+        justify-content: center;
+        text-align: center;
+        font-size: 9px;
       }
 
-      .btn{
-        width:100%;
+      .topbar-inner > span:last-child {
+        display: none;
       }
 
-      .product{
-        height:350px;
+      .nav {
+        min-height: 70px;
       }
 
-      .whatsapp{
-        right:15px;
-        bottom:15px;
+      .brand-symbol {
+        width: 40px;
+        height: 40px;
+        font-size: 23px;
+      }
+
+      .brand-text strong {
+        font-size: 21px;
+      }
+
+      .menu-toggle {
+        display: block;
+        flex-shrink: 0;
+      }
+
+      .nav-links {
+        position: fixed;
+        top: 106px;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        z-index: 1001;
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+        justify-content: flex-start;
+        gap: 0;
+        padding: 18px 24px 35px;
+        background: #101010;
+        overflow-y: auto;
+        transform: translateX(100%);
+        visibility: hidden;
+        transition: transform .25s ease, visibility .25s;
+      }
+
+      .nav-links.open {
+        transform: translateX(0);
+        visibility: visible;
+      }
+
+      .nav-links a:not(.btn) {
+        padding: 17px 0;
+        border-bottom: 1px solid var(--line);
+        font-size: 13px;
+      }
+
+      .nav-links .btn {
+        margin-top: 20px;
+      }
+
+      .hero {
+        min-height: 610px;
+      }
+
+      .hero-image {
+        background:
+          linear-gradient(90deg, rgba(10,10,10,.9), rgba(10,10,10,.54)),
+          linear-gradient(0deg, rgba(10,10,10,.8), transparent),
+          url("https://images.unsplash.com/photo-1503951914875-452162b0f3f1?auto=format&fit=crop&w=1000&q=80")
+          58% center / cover no-repeat;
+      }
+
+      .hero-content {
+        padding: 75px 0;
+      }
+
+      .hero h1 {
+        font-size: clamp(60px, 14vw, 88px);
+      }
+
+      .hero-description {
+        font-size: 13px;
+      }
+
+      .hero-bottom {
+        gap: 15px;
+      }
+
+      .hero-detail {
+        font-size: 10px;
+      }
+
+      .feature-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .feature {
+        padding: 17px 0;
+        border-right: 0;
+        border-bottom: 1px solid rgba(0,0,0,.15);
+      }
+
+      .feature:last-child {
+        border-bottom: 0;
+      }
+
+      .feature-number {
+        width: 42px;
+        font-size: 27px;
+      }
+
+      .about-grid {
+        grid-template-columns: 1fr;
+        gap: 38px;
+      }
+
+      .about-visual {
+        min-height: 340px;
+      }
+
+      .about-image {
+        inset: 0 30px 25px 0;
+        width: calc(100% - 30px);
+        height: calc(100% - 25px);
+      }
+
+      .about-stamp {
+        padding: 16px;
+      }
+
+      .section-heading-row {
+        display: block;
+        margin-bottom: 32px;
+      }
+
+      .section-heading-row > .btn {
+        margin-top: 22px;
+      }
+
+      .services-grid {
+        grid-template-columns: 1fr;
+        gap: 13px;
+      }
+
+      .service-card {
+        padding: 23px;
+      }
+
+      .service-card p {
+        min-height: 0;
+      }
+
+      .gallery-grid {
+        grid-template-columns: repeat(2, 1fr);
+        grid-auto-rows: 175px;
+        gap: 10px;
+      }
+
+      .gallery-item:first-child {
+        grid-row: span 2;
+      }
+
+      .gallery-overlay {
+        padding: 12px;
+      }
+
+      .gallery-overlay span {
+        font-size: 18px;
+      }
+
+      .cta {
+        padding: 60px 0;
+      }
+
+      .cta-inner {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 25px;
+      }
+
+      .location-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .location-info {
+        padding: 23px;
+      }
+
+      .map-panel {
+        min-height: 300px;
+      }
+
+      .footer-grid {
+        grid-template-columns: 1fr;
+        gap: 35px;
+      }
+
+      .footer-bottom {
+        flex-direction: column;
+        gap: 9px;
+      }
+
+      .whatsapp-float {
+        right: 15px;
+        bottom: 18px;
+        width: 54px;
+        height: 54px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+
+      *, *::before, *::after {
+        transition-duration: .01ms !important;
       }
     }
   </style>
@@ -890,948 +1168,643 @@
 
 <body>
 
-  <!-- =========================
-       HEADER
-  ========================== -->
+  <!-- Barra superior -->
+  <div class="topbar">
+    <div class="container topbar-inner">
+      <span><strong>Barbearia Giconda</strong> · Estilo e personalidade</span>
+      <span>Localização: Zango, Angola</span>
+    </div>
+  </div>
 
-  <header>
-
+  <!-- Cabeçalho -->
+  <header class="header">
     <div class="container nav">
 
-      <a href="#inicio" class="logo">
-        Duchess <span>Burguer</span>
+      <a href="#inicio" class="brand" aria-label="Barbearia Giconda - Início">
+        <div class="brand-symbol">G</div>
+        <div class="brand-text">
+          <strong>Giconda</strong>
+          <small>Barbearia</small>
+        </div>
       </a>
 
-      <nav>
+      <button class="menu-toggle" id="menuToggle"
+        aria-label="Abrir menu" aria-expanded="false"
+        aria-controls="navLinks">
+        ☰
+      </button>
 
+      <nav class="nav-links" id="navLinks" aria-label="Menu principal">
         <a href="#inicio">Início</a>
-
-        <a href="#menu">Menu</a>
-
-        <a href="#eventos">Eventos</a>
-
+        <a href="#sobre">Sobre nós</a>
+        <a href="#servicos">Serviços</a>
         <a href="#galeria">Galeria</a>
-
-        <a href="#contacto">Contacto</a>
-
-        <a
-          href="https://wa.me/244922003274?text=Olá%20Duchess%20Burguer!%20Gostaria%20de%20saber%20mais."
-          target="_blank"
-          rel="noopener"
-          class="nav-btn">
-          WhatsApp
+        <a href="#localizacao">Localização</a>
+        <a href="#" class="btn btn-primary" data-whatsapp="marcacao">
+          Contactar agora ↗
         </a>
-
       </nav>
 
     </div>
-
   </header>
-
-
-  <!-- =========================
-       HERO
-  ========================== -->
 
   <main>
 
+    <!-- Hero -->
     <section class="hero" id="inicio">
+      <div class="hero-image" aria-hidden="true"></div>
 
-      <div class="container">
+      <div class="container hero-content">
+        <div class="hero-copy">
 
-        <div class="hero-content">
-
-          <div class="badge">
-            🍔 FAST FOOD • 🎉 EVENTOS • 📍 LUANDA
+          <div class="hero-kicker">
+            <span></span>
+            O seu estilo começa aqui
           </div>
 
           <h1>
-            Mais do que sabor.<br>
-            É <span>experiência.</span>
+            Mais que um
+            <span>corte.</span>
+            Uma identidade.
           </h1>
 
-          <p>
-            Hambúrgueres, cachorros-quentes, fahitas e
-            soluções gastronómicas para refeições,
-            festas, aniversários e eventos especiais em Luanda.
+          <p class="hero-description">
+            Bem-vindo à Barbearia Giconda. Um espaço dedicado ao cuidado
+            pessoal, ao estilo e à valorização da sua imagem.
+            Venha conhecer os nossos serviços no Zango.
           </p>
 
-          <div class="buttons">
-
-            <a
-              class="btn btn-gold"
-              href="#menu">
-              🍔 Conhecer o Menu
+          <div class="hero-actions">
+            <a href="#servicos" class="btn btn-primary">
+              Conhecer os serviços ↗
             </a>
 
-            <a
-              class="btn btn-outline"
-              href="#eventos">
-              🎉 Conhecer os Eventos
+            <a href="#" class="btn btn-outline" data-whatsapp="marcacao">
+              <span>◉</span> Fazer uma marcação
             </a>
-
           </div>
 
+          <div class="hero-bottom">
+            <div class="hero-detail">
+              <span class="hero-detail-icon">✦</span>
+              <span>Estilo ao seu gosto</span>
+            </div>
+
+            <div class="hero-detail">
+              <span class="hero-detail-icon">✂</span>
+              <span>Cuidado e atenção</span>
+            </div>
+
+            <div class="hero-detail">
+              <span class="hero-detail-icon">⌖</span>
+              <span>Zango, Angola</span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Destaques -->
+    <section class="feature-strip" aria-label="Destaques">
+      <div class="container feature-grid">
+
+        <div class="feature">
+          <span class="feature-number">01</span>
+          <div>
+            <strong>O seu estilo</strong>
+            <small>Cortes ao seu gosto</small>
+          </div>
+        </div>
+
+        <div class="feature">
+          <span class="feature-number">02</span>
+          <div>
+            <strong>A sua imagem</strong>
+            <small>Cuide da sua apresentação</small>
+          </div>
+        </div>
+
+        <div class="feature">
+          <span class="feature-number">03</span>
+          <div>
+            <strong>Contacto fácil</strong>
+            <small>Informações pelo WhatsApp</small>
+          </div>
         </div>
 
       </div>
-
     </section>
 
+    <!-- Sobre a barbearia -->
+    <section class="section" id="sobre">
+      <div class="container about-grid">
 
-    <!-- =========================
-         VISUAL FEATURES
-    ========================== -->
-
-    <section class="visual-section">
-
-      <div class="container visual-grid">
-
-
-        <!-- FAST FOOD -->
-
-        <div class="visual-card">
-
+        <div class="about-visual">
           <img
-            src="https://commons.wikimedia.org/wiki/Special:Redirect/file/A%20cheeseburger.jpg"
-            alt="Hambúrguer"
-            loading="lazy">
+            class="about-image"
+            src="https://images.unsplash.com/photo- barber-shop?auto=format&fit=crop&w=900&q=80"
+            alt="Ambiente de barbearia"
+            loading="lazy"
+            onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1503951914875-452162b0f3f1?auto=format&fit=crop&w=900&q=80';"
+          >
 
-          <div class="visual-overlay"></div>
+          <div class="about-frame"></div>
 
-          <div class="visual-content">
-
-            <div class="visual-icon">
-              🍔
-            </div>
-
-            <strong>FAST FOOD</strong>
-
-            <p>
-              Hambúrgueres, cachorros-quentes e fahitas
-              preparados para momentos deliciosos.
-            </p>
-
+          <div class="about-stamp">
+            <strong>O seu estilo.</strong>
+            <small>A sua personalidade em destaque.</small>
           </div>
-
         </div>
 
+        <div class="about-copy">
+          <div class="eyebrow">Sobre a barbearia</div>
 
-        <!-- EVENTOS -->
-
-        <div class="visual-card">
-
-          <img
-            src="https://images.unsplash.com/photo-1519167758481-83f550bb49b3?auto=format&fit=crop&w=1000&q=80"
-            alt="Evento e celebração"
-            loading="lazy">
-
-          <div class="visual-overlay"></div>
-
-          <div class="visual-content">
-
-            <div class="visual-icon">
-              🎉
-            </div>
-
-            <strong>EVENTOS</strong>
-
-            <p>
-              Aniversários, festas, convívios e
-              eventos corporativos com sabor.
-            </p>
-
-          </div>
-
-        </div>
-
-
-        <!-- LUANDA -->
-
-        <div class="visual-card">
-
-          <img
-            src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Luanda%20from%20above.jpg"
-            alt="Vista de Luanda"
-            loading="lazy">
-
-          <div class="visual-overlay"></div>
-
-          <div class="visual-content">
-
-            <div class="visual-icon">
-              📍
-            </div>
-
-            <strong>LUANDA</strong>
-
-            <p>
-              Rua Soba Mandume, Bairro Marçal,
-              próximo à Cidadela Desportiva.
-            </p>
-
-          </div>
-
-        </div>
-
-      </div>
-
-    </section>
-
-
-    <!-- =========================
-         MENU
-    ========================== -->
-
-    <section class="menu" id="menu">
-
-      <div class="container">
-
-        <div class="section-head">
-
-          <div class="small">
-            O nosso menu
-          </div>
-
-          <h2>
-            Sabor que dá vontade de voltar.
+          <h2 class="section-title">
+            A sua imagem merece <span>atenção.</span>
           </h2>
 
           <p>
-            Conheça algumas das opções que podem
-            fazer parte da experiência Duchess Burguer.
+            A Barbearia Giconda é um negócio local situado no Zango,
+            pensado para quem valoriza a sua aparência e procura
+            um estilo que combine com a sua personalidade.
           </p>
 
-        </div>
-
-
-        <div class="product-grid">
-
-
-          <!-- HAMBURGUER -->
-
-          <article class="product">
-
-            <img
-              src="https://commons.wikimedia.org/wiki/Special:Redirect/file/A%20cheeseburger.jpg"
-              alt="Hambúrguer"
-              loading="lazy">
-
-            <div class="product-content">
-
-              <div class="product-tag">
-                Fast Food
-              </div>
-
-              <h3>
-                🍔 Hambúrgueres
-              </h3>
-
-              <p>
-                Uma opção clássica para quem procura
-                sabor, praticidade e uma refeição especial.
-              </p>
-
-            </div>
-
-          </article>
-
-
-          <!-- HOT DOG -->
-
-          <article class="product">
-
-            <img
-              src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Hotdog.PNG"
-              alt="Cachorro-quente"
-              loading="lazy">
-
-            <div class="product-content">
-
-              <div class="product-tag">
-                Fast Food
-              </div>
-
-              <h3>
-                🌭 Cachorros-quentes
-              </h3>
-
-              <p>
-                Uma alternativa prática e saborosa
-                para refeições, encontros e eventos.
-              </p>
-
-            </div>
-
-          </article>
-
-
-          <!-- FAHITAS -->
-
-          <article class="product">
-
-            <img
-              src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Fajitas-small.png"
-              alt="Fahitas"
-              loading="lazy">
-
-            <div class="product-content">
-
-              <div class="product-tag">
-                Especialidade
-              </div>
-
-              <h3>
-                🌮 Fahitas
-              </h3>
-
-              <p>
-                Uma opção diferente para quem procura
-                uma experiência cheia de sabor.
-              </p>
-
-            </div>
-
-          </article>
-
-        </div>
-
-      </div>
-
-    </section>
-
-
-    <!-- =========================
-         EXPERIENCE
-    ========================== -->
-
-    <section class="experience">
-
-      <div class="container experience-grid">
-
-
-        <div class="experience-image">
-
-          <img
-            src="https://commons.wikimedia.org/wiki/Special:Redirect/file/A%20cheeseburger.jpg"
-            alt="Hambúrguer Duchess Burguer"
-            loading="lazy">
-
-        </div>
-
-
-        <div class="experience-content">
-
-          <div class="small">
-            Uma experiência diferente
-          </div>
-
-          <h2>
-            Comida que combina
-            com o seu <span>momento.</span>
-          </h2>
-
           <p>
-            Da refeição rápida ao grande evento,
-            a proposta é levar sabor e praticidade
-            para diferentes ocasiões.
+            Queremos que encontre aqui as informações de que precisa
+            para conhecer os serviços e entrar em contacto de forma simples.
           </p>
 
           <ul class="check-list">
-
-            <li>
-              <span>✓</span>
-              Fast Food
-            </li>
-
-            <li>
-              <span>✓</span>
-              Aniversários
-            </li>
-
-            <li>
-              <span>✓</span>
-              Festas e convívios
-            </li>
-
-            <li>
-              <span>✓</span>
-              Eventos corporativos
-            </li>
-
-            <li>
-              <span>✓</span>
-              Ocasiões especiais
-            </li>
-
+            <li><span>✓</span> Apresentação clara dos serviços</li>
+            <li><span>✓</span> Informações acessíveis no telemóvel</li>
+            <li><span>✓</span> Contacto direto para esclarecer dúvidas</li>
+            <li><span>✓</span> Localização para facilitar a visita</li>
           </ul>
 
-          <a
-            class="btn btn-gold"
-            href="https://wa.me/244922003274?text=Olá%20Duchess%20Burguer!%20Gostaria%20de%20saber%20mais%20sobre%20os%20serviços%20para%20eventos."
-            target="_blank"
-            rel="noopener">
-            🎉 Informações sobre eventos
+          <a href="#" class="btn btn-primary" data-whatsapp="informacoes">
+            Falar com a barbearia ↗
           </a>
-
         </div>
 
       </div>
-
     </section>
 
-
-    <!-- =========================
-         EVENTS
-    ========================== -->
-
-    <section class="events" id="eventos">
-
+    <!-- Serviços -->
+    <section class="section services" id="servicos">
       <div class="container">
 
-        <div class="section-head">
-
-          <div class="small">
-            Eventos
+        <div class="section-heading-row">
+          <div>
+            <div class="eyebrow">O que fazemos</div>
+            <h2 class="section-title">
+              Os nossos <span>serviços.</span>
+            </h2>
+            <p class="section-description">
+              Consulte as opções de atendimento da Barbearia Giconda.
+              Os preços e os serviços específicos serão confirmados pela barbearia.
+            </p>
           </div>
 
-          <h2>
-            O seu evento também pode ter sabor.
-          </h2>
+          <a href="#" class="btn btn-outline" data-whatsapp="precos">
+            Consultar preços ↗
+          </a>
+        </div>
 
-          <p>
-            Uma apresentação pensada para mostrar
-            rapidamente os principais tipos de eventos.
-          </p>
+        <div class="services-grid">
+
+          <article class="service-card">
+            <div class="service-icon" aria-hidden="true">✂</div>
+            <h3>Corte de cabelo</h3>
+            <p>
+              Escolha o estilo que combina consigo e consulte as opções disponíveis.
+            </p>
+            <div class="service-price">
+              Preço sob consulta
+              <small>Valor a confirmar com a barbearia</small>
+            </div>
+          </article>
+
+          <article class="service-card">
+            <div class="service-icon" aria-hidden="true">◈</div>
+            <h3>Degradê</h3>
+            <p>
+              Um estilo moderno para quem procura um acabamento diferenciado.
+            </p>
+            <div class="service-price">
+              Preço sob consulta
+              <small>Valor a confirmar com a barbearia</small>
+            </div>
+          </article>
+
+          <article class="service-card">
+            <div class="service-icon" aria-hidden="true">⌁</div>
+            <h3>Barba</h3>
+            <p>
+              Consulte a disponibilidade de aparagem, alinhamento e outros cuidados.
+            </p>
+            <div class="service-price">
+              Preço sob consulta
+              <small>Serviços a confirmar</small>
+            </div>
+          </article>
+
+          <article class="service-card">
+            <div class="service-icon" aria-hidden="true">✧</div>
+            <h3>Corte e barba</h3>
+            <p>
+              Consulte a possibilidade de combinar serviços no mesmo atendimento.
+            </p>
+            <div class="service-price">
+              Preço sob consulta
+              <small>Pacotes a confirmar</small>
+            </div>
+          </article>
+
+          <article class="service-card">
+            <div class="service-icon" aria-hidden="true">◇</div>
+            <h3>Acabamentos</h3>
+            <p>
+              Informe-se sobre os acabamentos e detalhes disponíveis.
+            </p>
+            <div class="service-price">
+              Preço sob consulta
+              <small>Serviços a confirmar</small>
+            </div>
+          </article>
+
+          <article class="service-card">
+            <div class="service-icon" aria-hidden="true">＋</div>
+            <h3>Outros serviços</h3>
+            <p>
+              Entre em contacto para conhecer as restantes opções da barbearia.
+            </p>
+            <div class="service-price">
+              Consulte a disponibilidade
+              <small>Mais informações pelo WhatsApp</small>
+            </div>
+          </article>
 
         </div>
 
-
-        <div class="event-grid">
-
-
-          <!-- ANIVERSÁRIO -->
-
-          <article class="event">
-
-            <img
-              src="https://images.unsplash.com/photo-1519167758481-83f550bb49b3?auto=format&fit=crop&w=900&q=80"
-              alt="Aniversário"
-              loading="lazy">
-
-            <div class="event-content">
-
-              <div class="event-icon">
-                🎂
-              </div>
-
-              <h3>
-                Aniversários
-              </h3>
-
-              <p>
-                Comemore um momento especial
-                com sabor e praticidade.
-              </p>
-
-            </div>
-
-          </article>
-
-
-          <!-- FESTAS -->
-
-          <article class="event">
-
-            <img
-              src="https://images.unsplash.com/photo-1511795409834-ef04bbd61622?auto=format&fit=crop&w=900&q=80"
-              alt="Festa"
-              loading="lazy">
-
-            <div class="event-content">
-
-              <div class="event-icon">
-                🎊
-              </div>
-
-              <h3>
-                Festas
-              </h3>
-
-              <p>
-                Opções para tornar os encontros
-                ainda mais agradáveis.
-              </p>
-
-            </div>
-
-          </article>
-
-
-          <!-- CONVÍVIOS -->
-
-          <article class="event">
-
-            <img
-              src="https://images.unsplash.com/photo-1492684223066-81342ee5ff30?auto=format&fit=crop&w=900&q=80"
-              alt="Convívio"
-              loading="lazy">
-
-            <div class="event-content">
-
-              <div class="event-icon">
-                🥳
-              </div>
-
-              <h3>
-                Convívios
-              </h3>
-
-              <p>
-                Bons momentos acompanhados
-                de comida saborosa.
-              </p>
-
-            </div>
-
-          </article>
-
-
-          <!-- CORPORATIVO -->
-
-          <article class="event">
-
-            <img
-              src="https://images.unsplash.com/photo-1556761175-b413da4baf72?auto=format&fit=crop&w=900&q=80"
-              alt="Evento corporativo"
-              loading="lazy">
-
-            <div class="event-content">
-
-              <div class="event-icon">
-                💼
-              </div>
-
-              <h3>
-                Corporativos
-              </h3>
-
-              <p>
-                Uma opção para empresas,
-                equipas e reuniões.
-              </p>
-
-            </div>
-
-          </article>
-
-        </div>
+        <p class="services-note">
+          Nota: esta é uma demonstração inicial. Os serviços e os preços
+          devem ser confirmados pelo responsável antes da publicação oficial.
+        </p>
 
       </div>
-
     </section>
 
-
-    <!-- =========================
-         GALERIA
-    ========================== -->
-
-    <section class="gallery" id="galeria">
-
+    <!-- Galeria -->
+    <section class="section" id="galeria">
       <div class="container">
 
-        <div class="section-head">
+        <div class="eyebrow">Inspiração e estilo</div>
 
-          <div class="small">
-            Galeria
-          </div>
+        <h2 class="section-title">
+          Galeria de <span>estilos.</span>
+        </h2>
 
-          <h2>
-            Veja a experiência.
-          </h2>
-
-          <p>
-            Uma galeria visual para apresentar
-            produtos, ambiente e momentos.
-          </p>
-
-        </div>
-
+        <p class="section-description">
+          Explore algumas referências visuais de cortes masculinos.
+          Na versão oficial, estas imagens poderão ser substituídas
+          pelas fotografias dos trabalhos reais da Barbearia Giconda.
+        </p>
 
         <div class="gallery-grid">
 
-
           <div class="gallery-item">
-
             <img
-              src="https://commons.wikimedia.org/wiki/Special:Redirect/file/A%20cheeseburger.jpg"
-              alt="Hambúrguer"
-              loading="lazy">
-
-            <div class="gallery-caption">
-              🍔 Hambúrguer
+              src="https://images.unsplash.com/photo-1503951914875-452162b0f3f1?auto=format&fit=crop&w=800&q=80"
+              alt="Interior de uma barbearia"
+              loading="lazy"
+            >
+            <div class="gallery-overlay">
+              <span>Ambiente</span>
             </div>
-
           </div>
 
-
           <div class="gallery-item">
-
             <img
-              src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Hotdog.PNG"
-              alt="Cachorro-quente"
-              loading="lazy">
-
-            <div class="gallery-caption">
-              🌭 Cachorro-quente
+              src="https://images.unsplash.com/photo-1621605815971-fbc98d665033?auto=format&fit=crop&w=700&q=80"
+              alt="Referência de corte masculino"
+              loading="lazy"
+            >
+            <div class="gallery-overlay">
+              <span>Estilo moderno</span>
             </div>
-
           </div>
 
-
           <div class="gallery-item">
-
             <img
-              src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Fajitas-small.png"
-              alt="Fahitas"
-              loading="lazy">
-
-            <div class="gallery-caption">
-              🌮 Fahitas
+              src="https://images.unsplash.com/photo-1599351431202-1e0f0137899a?auto=format&fit=crop&w=700&q=80"
+              alt="Referência de cuidados masculinos"
+              loading="lazy"
+            >
+            <div class="gallery-overlay">
+              <span>Cuidado pessoal</span>
             </div>
-
           </div>
 
-
           <div class="gallery-item">
-
             <img
-              src="https://images.unsplash.com/photo-1507504031003-b417219a0fde?auto=format&fit=crop&w=1000&q=80"
-              alt="Comida"
-              loading="lazy">
-
-            <div class="gallery-caption">
-              🍽️ Experiência gastronómica
+              src="https://images.unsplash.com/photo-1593702295094-aea8c1a6b6b4?auto=format&fit=crop&w=700&q=80"
+              alt="Referência de penteado masculino"
+              loading="lazy"
+            >
+            <div class="gallery-overlay">
+              <span>Personalidade</span>
             </div>
-
           </div>
 
-
           <div class="gallery-item">
-
             <img
-              src="https://images.unsplash.com/photo-1556910103-1c02745aae4d?auto=format&fit=crop&w=1000&q=80"
-              alt="Preparação de comida"
-              loading="lazy">
-
-            <div class="gallery-caption">
-              👨‍🍳 Preparação
+              src="https://images.unsplash.com/photo-1622286342621-4bd786c2447c?auto=format&fit=crop&w=700&q=80"
+              alt="Referência de acabamento de cabelo"
+              loading="lazy"
+            >
+            <div class="gallery-overlay">
+              <span>Acabamento</span>
             </div>
-
-          </div>
-
-
-          <div class="gallery-item">
-
-            <img
-              src="https://images.unsplash.com/photo-1515003197210-e0cd71810b5f?auto=format&fit=crop&w=1000&q=80"
-              alt="Refeição"
-              loading="lazy">
-
-            <div class="gallery-caption">
-              ❤️ Sabor & experiência
-            </div>
-
           </div>
 
         </div>
 
       </div>
-
     </section>
 
-
-    <!-- =========================
-         COMO FUNCIONA
-    ========================== -->
-
-    <section class="process">
-
-      <div class="container">
-
-        <div class="section-head">
-
-          <div class="small">
-            Para eventos
-          </div>
-
-          <h2>
-            Organizar pode ser simples.
-          </h2>
-
-          <p>
-            O cliente encontra as informações
-            e pode entrar em contacto rapidamente.
-          </p>
-
-        </div>
-
-
-        <div class="process-grid">
-
-
-          <div class="process-card">
-
-            <div class="process-number">
-              01
-            </div>
-
-            <h3>
-              Escolha o serviço
-            </h3>
-
-            <p>
-              Conheça as opções disponíveis
-              para o seu evento.
-            </p>
-
-          </div>
-
-
-          <div class="process-card">
-
-            <div class="process-number">
-              02
-            </div>
-
-            <h3>
-              Solicite informações
-            </h3>
-
-            <p>
-              Entre em contacto diretamente
-              pelo WhatsApp.
-            </p>
-
-          </div>
-
-
-          <div class="process-card">
-
-            <div class="process-number">
-              03
-            </div>
-
-            <h3>
-              Combine os detalhes
-            </h3>
-
-            <p>
-              Data, quantidade de pessoas
-              e outros detalhes podem ser combinados.
-            </p>
-
-          </div>
-
-        </div>
-
-      </div>
-
-    </section>
-
-
-    <!-- =========================
-         CTA
-    ========================== -->
-
+    <!-- Chamada para contacto -->
     <section class="cta">
+      <div class="container cta-inner">
 
-      <div class="container">
-
-        <div class="cta-content">
-
-          <div class="small">
-            Duchess Burguer
-          </div>
-
+        <div>
+          <div class="eyebrow">Estamos aqui para si</div>
           <h2>
-            Está a organizar um evento?
+            O próximo corte<br>
+            começa com <span>uma mensagem.</span>
           </h2>
-
-          <p>
-            Entre em contacto para conhecer
-            as opções disponíveis para a sua ocasião.
-          </p>
-
-          <a
-            class="btn btn-gold"
-            href="https://wa.me/244922003274?text=Olá%20Duchess%20Burguer!%20Estou%20a%20organizar%20um%20evento%20e%20gostaria%20de%20saber%20as%20opções%20disponíveis."
-            target="_blank"
-            rel="noopener">
-            📲 Solicitar informações
-          </a>
-
+          <p>Entre em contacto para consultar os serviços e os preços.</p>
         </div>
+
+        <a href="#" class="btn btn-whatsapp" data-whatsapp="marcacao">
+          Contactar pelo WhatsApp ↗
+        </a>
 
       </div>
-
     </section>
 
-
-    <!-- =========================
-         CONTACTO
-    ========================== -->
-
-    <section class="contact" id="contacto">
-
+    <!-- Localização e contactos -->
+    <section class="section location" id="localizacao">
       <div class="container">
 
-        <div class="section-head">
+        <div class="eyebrow">Encontre-nos</div>
 
-          <div class="small">
-            Contacto
-          </div>
+        <h2 class="section-title">
+          Estamos no <span>Zango.</span>
+        </h2>
 
-          <h2>
-            Vamos conversar?
-          </h2>
+        <p class="section-description">
+          Consulte a localização e entre em contacto para obter
+          indicações mais precisas antes de se deslocar.
+        </p>
 
-          <p>
-            Todas as informações principais
-            ficam disponíveis num só lugar.
-          </p>
+        <div class="location-grid">
 
-        </div>
+          <div class="location-info">
 
-
-        <div class="contact-grid">
-
-
-          <div class="contact-card">
-
-            <h3>
-              📍 Onde estamos
-            </h3>
-
-            <div class="contact-item">
-
-              <strong>
-                Endereço
-              </strong>
-
-              Rua Soba Mandume,
-              Bairro Marçal, Luanda.
-
+            <div class="location-row">
+              <span class="location-icon">⌖</span>
+              <div>
+                <strong>Localização</strong>
+                <p>Zango, Angola</p>
+                <p>Rua e referência exatas a confirmar.</p>
+              </div>
             </div>
 
-            <div class="contact-item">
-
-              <strong>
-                Referência
-              </strong>
-
-              Próximo à Cidadela Desportiva.
-
+            <div class="location-row">
+              <span class="location-icon">◉</span>
+              <div>
+                <strong>WhatsApp / Telefone</strong>
+                <p>Número de contacto a confirmar.</p>
+              </div>
             </div>
 
-          </div>
-
-
-          <div class="contact-card">
-
-            <h3>
-              📲 Fale connosco
-            </h3>
-
-            <div class="contact-item">
-
-              <strong>
-                WhatsApp
-              </strong>
-
-              +244 922 003 274
-
+            <div class="location-row">
+              <span class="location-icon">◷</span>
+              <div>
+                <strong>Horário de funcionamento</strong>
+                <p>Dias e horários a confirmar com a barbearia.</p>
+              </div>
             </div>
 
-            <div class="contact-item">
-
-              <strong>
-                Atendimento
-              </strong>
-
-              Informações sobre menu,
-              pedidos e eventos.
-
-            </div>
-
-            <a
-              class="btn btn-gold"
-              style="width:100%;margin-top:20px;"
-              href="https://wa.me/244922003274?text=Olá%20Duchess%20Burguer!%20Gostaria%20de%20obter%20mais%20informações."
-              target="_blank"
-              rel="noopener">
-              💬 Abrir WhatsApp
+            <a href="#" class="btn btn-primary" data-whatsapp="localizacao">
+              Pedir indicações ↗
             </a>
 
           </div>
 
+          <div class="map-panel">
+            <div class="map-pin">⌖</div>
+            <h3>Barbearia Giconda</h3>
+            <p>
+              Localização aproximada: Zango, Angola.
+              A morada exata será adicionada assim que for confirmada.
+            </p>
+
+            <a
+              href="https://www.google.com/maps/search/?api=1&query=Barbearia+Giconda+Zango+Angola"
+              class="btn btn-outline"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Procurar no Google Maps ↗
+            </a>
+          </div>
+
         </div>
-
       </div>
-
     </section>
 
   </main>
 
+  <!-- Rodapé -->
+  <footer class="footer">
+    <div class="container">
 
-  <!-- =========================
-       DEMO NOTE
-  ========================== -->
+      <div class="footer-grid">
 
-  <div class="demo-note">
+        <div class="footer-about">
+          <a href="#inicio" class="brand">
+            <div class="brand-symbol">G</div>
+            <div class="brand-text">
+              <strong>Giconda</strong>
+              <small>Barbearia</small>
+            </div>
+          </a>
 
-    Demonstração conceptual criada por
-    <strong>Fely e Amigos | Soluções Digitais</strong>.
-    As imagens utilizadas nesta demonstração são ilustrativas.
+          <p>
+            Uma apresentação digital pensada para facilitar o acesso
+            aos serviços, melhorar a comunicação com os clientes
+            e valorizar a presença da Barbearia Giconda.
+          </p>
+        </div>
 
-  </div>
+        <div>
+          <h4>Navegação</h4>
+          <div class="footer-links">
+            <a href="#inicio">Início</a>
+            <a href="#sobre">Sobre nós</a>
+            <a href="#servicos">Serviços</a>
+            <a href="#galeria">Galeria</a>
+            <a href="#localizacao">Localização</a>
+          </div>
+        </div>
 
+        <div>
+          <h4>Contactos</h4>
+          <div class="footer-links">
+            <p>Zona: Zango, Angola</p>
+            <p>Telefone: a confirmar</p>
+            <a href="#" data-whatsapp="informacoes">WhatsApp</a>
+            <a href="#" data-whatsapp="marcacao">Solicitar informações</a>
+          </div>
+        </div>
 
-  <!-- =========================
-       FOOTER
-  ========================== -->
-
-  <footer>
-
-    <div class="container footer-flex">
-
-      <div>
-        © 2026 <strong>Duchess Burguer</strong>
       </div>
 
-      <div>
-        Demonstração digital — Fely e Amigos
+      <div class="footer-bottom">
+        <p>
+          © <span id="currentYear"></span> Barbearia Giconda.
+          Todos os direitos reservados.
+        </p>
+
+        <p>
+          Presença digital por
+          <a href="https://ramo-verde.vercel.app/" target="_blank" rel="noopener noreferrer">
+            Fely e Amigos | Soluções Digitais
+          </a>
+        </p>
       </div>
 
     </div>
-
   </footer>
 
+  <!-- Botão flutuante do WhatsApp -->
+  <a href="#" class="whatsapp-float" data-whatsapp="marcacao"
+     aria-label="Contactar a Barbearia Giconda pelo WhatsApp"
+     title="Contactar pelo WhatsApp">
 
-  <!-- =========================
-       WHATSAPP FLUTUANTE
-  ========================== -->
-
-  <a
-    class="whatsapp"
-    href="https://wa.me/244922003274?text=Olá%20Duchess%20Burguer!%20Gostaria%20de%20saber%20mais."
-    target="_blank"
-    rel="noopener"
-    aria-label="Falar com Duchess Burguer pelo WhatsApp">
-
-    💬
+    <svg viewBox="0 0 32 32" aria-hidden="true">
+      <path d="M16 .8A15.1 15.1 0 0 0 3.1 23.7L1 31l7.5-2A15.1 15.1 0 1 0 16 .8zm0 27.5a12.4 12.4 0 0 1-6.3-1.7l-.5-.3-4.4 1.2L6 23.2l-.3-.5A12.4 12.4 0 1 1 16 28.3zm6.8-9.3c-.4-.2-2.2-1.1-2.5-1.2-.4-.1-.6-.2-.9.2-.3.4-1 1.2-1.2 1.4-.2.3-.5.3-.9.1-.4-.2-1.6-.6-3-1.9-1.1-1-1.9-2.2-2.1-2.6-.2-.4 0-.6.2-.8l.6-.7c.2-.2.3-.4.4-.7.1-.2 0-.5 0-.7-.1-.2-.9-2.1-1.2-2.8-.3-.7-.6-.6-.9-.6h-.8c-.3 0-.7.1-1 .5-.4.4-1.3 1.3-1.3 3.2s1.4 3.7 1.6 4c.2.3 2.7 4.2 6.5 5.7.9.4 1.6.6 2.1.7.9.3 1.7.2 2.3.1.7-.1 2.2-.9 2.5-1.8.3-.9.3-1.7.2-1.8-.1-.2-.4-.3-.8-.5z"/>
+    </svg>
 
   </a>
+
+  <div class="demo-label">Demonstração inicial</div>
+
+  <script>
+    /*
+      CONFIGURAÇÃO DO WEBSITE
+
+      1. Coloque o WhatsApp do responsável abaixo.
+      2. Use o indicativo internacional de Angola: 244.
+      3. Escreva apenas números, sem +, espaços ou traços.
+
+      Exemplo fictício de formato: 2449XXXXXXXX
+      Não publique até confirmar o número correto.
+    */
+
+    const CONFIG = {
+      nome: "Barbearia Giconda",
+      whatsapp: "",
+
+      mensagemMarcacao:
+        "Olá! Visitei a página da Barbearia Giconda e gostaria de saber mais sobre os serviços e as marcações.",
+
+      mensagemInformacoes:
+        "Olá! Gostaria de obter mais informações sobre a Barbearia Giconda.",
+
+      mensagemPrecos:
+        "Olá! Gostaria de conhecer os serviços disponíveis e os respetivos preços da Barbearia Giconda.",
+
+      mensagemLocalizacao:
+        "Olá! Poderiam enviar-me a localização exata da Barbearia Giconda no Zango?"
+    };
+
+    // Ano automático no rodapé
+    document.getElementById("currentYear").textContent =
+      new Date().getFullYear();
+
+    // Menu para telemóveis
+    const menuToggle = document.getElementById("menuToggle");
+    const navLinks = document.getElementById("navLinks");
+
+    function fecharMenu() {
+      navLinks.classList.remove("open");
+      menuToggle.setAttribute("aria-expanded", "false");
+      menuToggle.setAttribute("aria-label", "Abrir menu");
+      menuToggle.textContent = "☰";
+      document.body.classList.remove("menu-open");
+    }
+
+    menuToggle.addEventListener("click", function () {
+      const aberto = navLinks.classList.toggle("open");
+
+      menuToggle.setAttribute("aria-expanded", String(aberto));
+      menuToggle.setAttribute(
+        "aria-label",
+        aberto ? "Fechar menu" : "Abrir menu"
+      );
+
+      menuToggle.textContent = aberto ? "×" : "☰";
+      document.body.classList.toggle("menu-open", aberto);
+    });
+
+    navLinks.querySelectorAll("a").forEach(function (link) {
+      link.addEventListener("click", function () {
+        fecharMenu();
+      });
+    });
+
+    // Liga os botões ao WhatsApp quando o número for configurado
+    document.querySelectorAll("[data-whatsapp]").forEach(function (botao) {
+      botao.addEventListener("click", function (event) {
+        event.preventDefault();
+
+        const numero = CONFIG.whatsapp.replace(/\D/g, "");
+        const tipo = botao.getAttribute("data-whatsapp");
+
+        const mensagens = {
+          marcacao: CONFIG.mensagemMarcacao,
+          informacoes: CONFIG.mensagemInformacoes,
+          precos: CONFIG.mensagemPrecos,
+          localizacao: CONFIG.mensagemLocalizacao
+        };
+
+        if (!numero) {
+          alert(
+            "O contacto WhatsApp da Barbearia Giconda ainda não foi configurado nesta demonstração. Adicione o número correto na secção CONFIG do código."
+          );
+          return;
+        }
+
+        if (!/^\d{9,15}$/.test(numero)) {
+          alert(
+            "O número configurado não parece válido. Confirme o indicativo internacional e escreva apenas os algarismos."
+          );
+          return;
+        }
+
+        const texto = encodeURIComponent(
+          mensagens[tipo] || mensagens.informacoes
+        );
+
+        const url = "https://wa.me/" + numero + "?text=" + texto;
+
+        window.open(url, "_blank", "noopener,noreferrer");
+      });
+    });
+  </script>
 
 </body>
 </html>
